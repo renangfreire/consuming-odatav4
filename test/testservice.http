@@ -1,0 +1,35 @@
+GET http://localhost:4004/odata/v4/administrator/Admin
+###
+POST http://localhost:4004/odata/v4/products/Products
+Content-Type: application/json
+
+{
+      "Name": "Orange Juice",
+      "Description": "A delicious orange juice",
+      "Price": 10,
+      "ImageUrl": "/product/webapp/assets/orange-juice.jpg",
+      "ReleaseDate": "1990-01-01T00:00:00Z",
+      "DiscontinuedDate": null,
+      "Height": 5,
+      "Width": 2.1,
+      "Depth": 2,
+      "Quantity": 20
+}
+###
+GET http://localhost:4004/odata/v4/products/Products
+
+###
+
+DELETE http://localhost:4004/odata/v4/products/Products(038a19af-330a-4092-bee1-daaa0f287cd5)
+
+###
+
+PUT http://localhost:4004/odata/v4/products/Products(54102d4a-8613-4929-961a-a178ed7f83f8)
+Content-Type: application/json
+
+{
+      "Name": "Strawberry Juice",
+      "Description": "A delicious strawberry juice",
+      "Price": 15,
+      "ImageUrl": "/product/webapp/assets/strawberry-juice.jpg"
+}
