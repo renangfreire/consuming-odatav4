@@ -1,6 +1,6 @@
-ID,Name,Description,Price,ImageUrl,ReleaseDate,DiscontinuedDate,Height,Width,Depth,Quantity
-3079731b-b9ff-4125-8803-46a8e8ac0ec7,Bread,Whole grain bread,2.5,/product/webapp/assets/bread.jpg,1970-01-01T00:00:00.000Z,,5.0,2.1,2.0,15
-fb53acc2-7c70-4c36-8d0c-506eaabceeb8,Milk,Standard,1,/product/webapp/assets/milk.jpg,1970-01-01T00:00:00.000Z,,5.0,2.1,2.0,15
-9918ad8f-ba4a-441e-b427-a3d2682dfb52,Chocolate,50% ,3,/product/webapp/assets/chocolate.jpg,1970-01-01T00:00:00.000Z,,5.0,2.1,2.0,15
-038a19af-330a-4092-bee1-daaa0f287cd5,Meat,Pig,10,/product/webapp/assets/meat.jpg,1970-01-01T00:00:00.000Z,,5.0,2.1,2.0,15
-cc06d375-0c0f-4fb8-9568-7bbf3e0e0807,Paste Peanut,Chocolate,5,/product/webapp/assets/paste-peanut.jpg,1970-01-01T00:00:00.000Z,,5.0,2.1,2.0,15
+ID,Name,Description,Price,Quantity
+3079731b-b9ff-4125-8803-46a8e8ac0ec7,Bread,Whole grain bread,2.5,15
+fb53acc2-7c70-4c36-8d0c-506eaabceeb8,Milk,Standard,1,15
+9918ad8f-ba4a-441e-b427-a3d2682dfb52,Chocolate,50% ,3,15
+038a19af-330a-4092-bee1-daaa0f287cd5,Meat,Pig,10,15
+cc06d375-0c0f-4fb8-9568-7bbf3e0e0807,Paste Peanut,1,5

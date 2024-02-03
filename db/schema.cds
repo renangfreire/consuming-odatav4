@@ -5,12 +5,6 @@ entity Products {
         Name             : String;
         Description      : String;
         Price            : Decimal(16, 2);
-        ImageUrl         : String;
-        ReleaseDate      : DateTime;
-        DiscontinuedDate : DateTime;
-        Height           : Decimal(16, 2);
-        Width            : Decimal(16, 2);
-        Depth            : Decimal(16, 2);
         Quantity         : Integer;
 }
 
