@@ -14,8 +14,8 @@ sap.ui.define([
                 const oRequestedObject = models.getProducts()
 
                 oRequestedObject.then((aData) => {
-                    const oModel = new JSONModel({products: aData})
-                    this.getView().setModel(oModel)
+                    const oModel = new JSONModel(aData)
+                    this.getView().setModel(oModel, 'products')
                     
                 }).catch(error => console.log(error.message))
 
@@ -24,8 +24,8 @@ sap.ui.define([
                 const oRequestedObject = models.putProduct()
 
                 oRequestedObject.then((aData) => {
-                    const oModel = new JSONModel({products: aData})
-                    this.getView().setModel(oModel)
+                    const oModel = new JSONModel(aData)
+                    this.getView().setModel(oModel, 'products')
                     
                 }).catch(error => console.log(error.message))
             },
@@ -33,8 +33,8 @@ sap.ui.define([
                 const oRequestedObject = models.deleteProduct();
 
                 oRequestedObject.then((aData) => {
-                    const oModel = new JSONModel({products: aData})
-                    this.getView().setModel(oModel)
+                    const oModel = new JSONModel(aData)
+                    this.getView().setModel(oModel, 'products')
                     
                 }).catch(error => console.log(error.message))
             },
@@ -42,8 +42,8 @@ sap.ui.define([
                 const oRequestedObject = models.postProduct()
 
                 oRequestedObject.then((aData) => {
-                    const oModel = new JSONModel({products: aData})
-                    this.getView().setModel(oModel)
+                    const oModel = new JSONModel(aData)
+                    this.getView().setModel(oModel, 'products')
                     
                 }).catch(error => console.log(error.message))
 

@@ -13,7 +13,7 @@ sap.ui.define([
             return oModel;
         },
         getProducts: function(){
-            return connector.get('/Products')
+            return connector.get({sPath: '/Products'})
         },
         postProduct: function(){
 
@@ -25,7 +25,7 @@ sap.ui.define([
                   "Quantity": 20
             }
 
-            return connector.post(oProduct, "/Products")
+            return connector.post({oData: oProduct, sPath: "/Products"})
         },
         putProduct: function() {
             const sID = "cc06d375-0c0f-4fb8-9568-7bbf3e0e0807"
@@ -35,12 +35,12 @@ sap.ui.define([
                 "ImageUrl": "/product/webapp/assets/test.jpg",
             }
 
-            return connector.put(oProduct, "/Products", sID)
+            return connector.put({oChangedDatao: Product, sPath: "/Products", sID})
         },
         deleteProduct: function(){
             const sID = "038a19af-330a-4092-bee1-daaa0f287cd5"
 
-            return connector.delete("/Products", sID)
+            return connector.delete({sPath: "/Products", sID})
         }
     };
 });

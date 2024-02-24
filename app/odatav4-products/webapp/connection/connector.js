@@ -1,110 +1,120 @@
 sap.ui.define([
-    "sap/ui/model/odata/v4/ODataModel",
-  ],
-    function (ODataModel) {
-      "use strict";
-  
-      return {
-        
-        init: function (oComponent) {
-          this._oComponent = oComponent
-        },
-  
-        _getOwnerComponent: function () {
-          return this._oComponent
-        },
-  
-        _getODataModel: function () {
-          const oDataModel = this._getOwnerComponent().getModel() // É importante que dentro da getModel seja o mesmo nome da MODEL na MANIFEST
-          return oDataModel
-        },
+  "sap/ui/model/odata/v4/ODataModel",
+],
+  function (ODataModel) {
+    "use strict";
 
-        _oDataBindingList: function(sPath, oContext, oURLParams){
-          return this._getODataModel().bindList(sPath, oContext, null, null, oURLParams);
-        },
-  
-        get: function (sPath, oURLParam, oContext) {
-        const oODataModel = this._getODataModel();
+    return {
+      
+      init: function (oComponent) {
+        this._oComponent = oComponent
+      },
 
-        const oDataContext = oODataModel.bindContext(sPath, oContext, oURLParam)
+      getOwnerComponent: function () {
+        return this._oComponent
+      },
+
+      getODataModel: function () {
+        const oDataModel = this.getOwnerComponent().getModel()
+        return oDataModel
+      },
+
+      _oDataBindingList: function(sPath, oContext, oURLParams){
+        return this.getODataModel().bindList(sPath, oContext, null, null, oURLParams);
+      },
+
+      get: function ({sPath, oURLParams, oContext}) {
+        const oODataModel = this.getODataModel();
+
+        const oDataContext = oODataModel.bindContext(sPath, oContext, oURLParams)
 
         return new Promise((resolve, reject) => {
             const oRequestedObject = oDataContext.requestObject()
 
             return oRequestedObject
                 .then((oData) => {
-                    resolve(oData.value)
+                    resolve(oData.value || oData)
                 })
                 .catch((err) =>{
                     reject(err)
                 })
         })
-        },
-  
-        post: function (oData, sPath, oContext, oURLParams) {
-          return new Promise((resolve, reject) => {
-              const oDataBindList = this._oDataBindingList(sPath, oContext, oURLParams);
-              const oEntity =  oDataBindList.create(oData)
+      },
+      
+      post: function ({oData, sPath, oContext, oURLParams, bReturnSameRoute = true, bSkipRefresh = false, bReturnEntity= true}) {
+        const oDataBindList = this._oDataBindingList(sPath, oContext);
+        const oEntity = oDataBindList.create(oData, bSkipRefresh)
+        
+        return new Promise(async (resolve, reject) => {
+          oDataBindList.attachCreateCompleted(() => { 
+            const hasBatchError = oDataBindList.getModel().mMessages[""]?.find(res => res.message !== '' && res.code >= 400); 
 
-              oEntity.created().then(
-                  oDataBindList.attachCreateCompleted(() => { 
-
-                  resolve(this.get(sPath))
-              })).catch(err => {reject(err)})
-          })
-
-        },
-
-        put: function(oDataChanged, sPath, sID, oURLParams, oContext){
-            return new Promise((resolve, reject) => {
-              const oSettings = {
-                ...oURLParams,
-                $filter: `ID eq ${sID}`
-              }
-
-              const oDataBindList = this._oDataBindingList(sPath, oContext, oSettings);
-
-              oDataBindList.requestContexts().then(aData => {
-                const oData = aData[0]
-
-                Object.entries(oDataChanged).forEach(([key, value]) => {
-                  if (oData.getProperty(key) === value) {
-                    return;
-                  }
-
-                  oData.setProperty(key, value);
-                });
-                resolve(this.get(sPath));
-              })
-                .catch(err => {
-                  reject(err)
-              })
-
-            })
-        },
-
-        delete: function(sPath, sID, oURLParams, oContext){
-          return new Promise((resolve, reject) => {
-            const oSettings = {
-              ...oURLParams,
-              $filter: `ID eq ${sID}`
+            if(hasBatchError){ 
+              oDataBindList.getModel().mMessages[""] = []
+              reject(hasBatchError)
             }
-
-            const oDataBindList = this._oDataBindingList(sPath, oContext, oSettings);
-
-            oDataBindList.requestContexts().then(aData => {
-              const oData = aData[0]
-
-              oData.delete()
-             
-              resolve(this.get(sPath));
-            })
-              .catch(err => {
-                reject(err)
-            })
             
+            if(bReturnSameRoute){
+              resolve(this.get({sPath, oURLParams}))
+            }
+            if(bReturnEntity){
+              resolve(oEntity)
+            }
+          resolve()
+      })})
+      },
 
+      put: function({oChangedData, sPath, sID, oURLParams, oContext, bReturnSameRoute = true}){
+          const oSettings = {
+            $filter: `ID eq ${sID}`
+          }
+
+          const oDataBindList = this._oDataBindingList(sPath, oContext, oSettings);
+          
+          return new Promise(async (resolve, reject) => {
+
+          oDataBindList.requestContexts().then(async aData => {
+            const oData = aData[0]
+
+            await Promise.all(Object.entries(oChangedData).map(([key, value]) => {
+              return oData.setProperty(key, value);
+            }))
+
+            if(bReturnSameRoute){
+              resolve(this.get({sPath, oURLParams}));
+            }
+            resolve()
           })
+            .catch(err => {
+              reject(err)
+          })
+
+        })
+      },
+
+      delete: function({sPath, sID, oURLParams, oContext, bReturnSameRoute = true}){
+        const oSettings = {
+          $filter: `ID eq ${sID}`
         }
-      };
-    });
+  
+        const oDataBindList = this._oDataBindingList(sPath, oContext, oSettings);
+
+        return new Promise((resolve, reject) => {
+
+          oDataBindList.requestContexts().then(aData => {
+            const oData = aData[0]
+
+            oData.delete()
+           
+            if(bReturnSameRoute){
+              resolve(this.get({sPath, oURLParams}));
+            }
+            resolve()
+          })
+            .catch(err => {
+              reject(err)
+          })
+        })
+      },
+    };
+  });

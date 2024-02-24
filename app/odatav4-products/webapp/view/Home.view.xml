@@ -4,7 +4,7 @@
     xmlns:table="sap.ui.table">
     <Page id="page" showHeader="false">
             <table:Table
-				rows="{/products}"
+				rows="{products>/}"
 				selectionMode="MultiToggle"
 				paste="onPaste"
 				ariaLabelledBy="title">
@@ -21,31 +21,31 @@
 					<table:Column width="25rem">
 						<Label text="Product Id" />
 						<table:template>
-							<Text text="{ID}"/>
+							<Text text="{products>ID}"/>
 						</table:template>
 					</table:Column>
 					<table:Column width="11rem">
 						<Label text="Product Name" />
 						<table:template>
-							<Text text="{Name}" wrapping="false" />
+							<Text text="{products>Name}" wrapping="false" />
 						</table:template>
 					</table:Column>
 					<table:Column width="6rem" hAlign="End">
 						<Label text="Quantity" />
 						<table:template>
-							<Label text="{Quantity}" />
+							<Label text="{products>Quantity}" />
 						</table:template>
 					</table:Column>
 					<table:Column width="9rem">
 						<Label text="Description" />
 						<table:template>
-							<Text text="{Description}" />
+							<Text text="{products>Description}" />
 						</table:template>
 					</table:Column>
 					<table:Column width="9rem">
 						<Label text="Price" />
 						<table:template>
-							<Text text="{Price}"/>
+							<Text text="{products>Price}"/>
 						</table:template>
 					</table:Column>
 				</table:columns>
