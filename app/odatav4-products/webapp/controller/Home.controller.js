@@ -18,30 +18,33 @@ sap.ui.define([
                     this.getView().setModel(oModel, 'products')
                     
                 }).catch(error => console.log(error.message))
-
             },
             onEditProduct: function(){
                 const oRequestedObject = models.putProduct()
 
-                oRequestedObject.then((aData) => {
+                oRequestedObject.then(async (oContext) => {
+                    const aData = await oContext.getSameRoute({})
+
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
-                    
                 }).catch(error => console.log(error.message))
             },
             onDeleteProduct: function(){
                 const oRequestedObject = models.deleteProduct();
 
-                oRequestedObject.then((aData) => {
+                oRequestedObject.then(async (oContext) => {
+                    const aData = await oContext.getSameRoute()
+
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
-                    
                 }).catch(error => console.log(error.message))
             },
             onCreateProduct: function(){
                 const oRequestedObject = models.postProduct()
 
-                oRequestedObject.then((aData) => {
+                oRequestedObject.then(async (oContext) => {
+                    const aData = await oContext.getSameRoute()
+
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
                     

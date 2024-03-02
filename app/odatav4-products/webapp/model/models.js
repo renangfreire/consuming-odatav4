@@ -32,10 +32,9 @@ sap.ui.define([
             const oProduct = {
                 "Name": "A Test in PUT",
                 "Description": "Its a very very interesting test",
-                "ImageUrl": "/product/webapp/assets/test.jpg",
             }
 
-            return connector.put({oChangedDatao: Product, sPath: "/Products", sID})
+            return connector.put({oChangedData: oProduct, sPath: "/Products", sID})
         },
         deleteProduct: function(){
             const sID = "038a19af-330a-4092-bee1-daaa0f287cd5"
