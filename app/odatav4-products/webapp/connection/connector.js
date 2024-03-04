@@ -113,7 +113,7 @@ sap.ui.define([
 
         oDataContext.delete()
 
-        return this._initContext(arguments, oEntity)
+        return this._initContext(arguments)
       },
     };
   });

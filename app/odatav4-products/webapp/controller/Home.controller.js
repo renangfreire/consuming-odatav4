@@ -23,7 +23,7 @@ sap.ui.define([
                 const oRequestedObject = models.putProduct()
 
                 oRequestedObject.then(async (oContext) => {
-                    const aData = await oContext.getSameRoute({})
+                    const aData = await oContext.getSameRoute()
 
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
