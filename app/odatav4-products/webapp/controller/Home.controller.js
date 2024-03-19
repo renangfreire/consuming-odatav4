@@ -20,7 +20,16 @@ sap.ui.define([
                 }).catch(error => console.log(error.message))
             },
             onEditProduct: function(){
-                const oRequestedObject = models.putProduct()
+                const oProduct = {
+                    "ID": "cc06d375-0c0f-4fb8-9568-7bbf3e0e0807",
+                    "Name": "A Test in PUT",
+                    "Description": "Its a very very interesting test",
+                }
+
+                // Sim é preciso passar o ID separado, na função abaixo
+                const sID = oProduct.ID
+
+                const oRequestedObject = models.putProduct(oProduct, sID)
 
                 oRequestedObject.then(async (oContext) => {
                     const aData = await oContext.getSameRoute()
@@ -30,7 +39,9 @@ sap.ui.define([
                 }).catch(error => console.log(error.message))
             },
             onDeleteProduct: function(){
-                const oRequestedObject = models.deleteProduct();
+                const sID = "038a19af-330a-4092-bee1-daaa0f287cd5"
+
+                const oRequestedObject = models.deleteProduct(sID);
 
                 oRequestedObject.then(async (oContext) => {
                     const aData = await oContext.getSameRoute()
@@ -39,17 +50,30 @@ sap.ui.define([
                     this.getView().setModel(oModel, 'products')
                 }).catch(error => console.log(error.message))
             },
-            onCreateProduct: function(){
-                const oRequestedObject = models.postProduct()
+            onCreateProduct: async function(){
+                const oProduct = 
+                {
+                      "Name": "ERROR",
+                      "Description": "A delicious grape juice",
+                      "Price": 10,
+                      "Quantity": 20
+                }
 
-                oRequestedObject.then(async (oContext) => {
-                    const aData = await oContext.getSameRoute()
-
-                    const oModel = new JSONModel(aData)
-                    this.getView().setModel(oModel, 'products')
-                    
-                }).catch(error => console.log(error.message))
-
+                
+                const oProduct2 = 
+                {
+                    "Name": "Grape Juice",
+                    "Description": "A delicious grape juice",
+                    "Price": 10,
+                    "Quantity": 20
+                }
+                
+                try {
+                    const oRequestedObject = await models.postProduct(oProduct)
+                } catch (error) {
+                    console.log(error)
+                }
+                const oRequestedObject2 = await models.postProduct(oProduct2)
             }
         });
     });

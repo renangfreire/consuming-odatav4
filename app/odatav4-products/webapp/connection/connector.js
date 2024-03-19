@@ -67,17 +67,23 @@ sap.ui.define([
         const oEntity = oDataBindList.create(oData, bSkipRefresh)
         
         await new Promise(async (resolve, reject) => {
-          oDataBindList.attachCreateCompleted(() => { 
-            const hasBatchError = oDataBindList.getModel().mMessages[""]?.find(res => res.message !== '' && res.code >= 400); 
+            oDataBindList.attachCreateCompleted((oEvent) => { 
+                const { success } = oEvent.getParameters();
+              
+                if (!success) {
+                const aBatchMessages = oDataBindList.getModel().mMessages[""]
+                
+                const aBatchMessagesClone = [...aBatchMessages].reverse()
+                const hasBatchError = aBatchMessagesClone?.find(res => res.message !== '' && res.code >= 400); 
 
-            if(hasBatchError){ 
-              oDataBindList.getModel().mMessages[""] = []
-              reject(hasBatchError)
+                if(hasBatchError){ 
+                  reject(hasBatchError)
+                }
             }
-            
-            resolve()
-          })
+
+          resolve()
         })
+      })
 
         return this._initContext(arguments, oEntity)
       },
