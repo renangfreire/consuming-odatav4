@@ -50,7 +50,7 @@ sap.ui.define([
                     this.getView().setModel(oModel, 'products')
                 }).catch(error => console.log(error.message))
             },
-            onCreateProduct: async function(){
+            onCreateProduct: function(){
                 const oProduct = 
                 {
                       "Name": "ERROR",
@@ -68,12 +68,16 @@ sap.ui.define([
                     "Quantity": 20
                 }
                 
-                try {
-                    const oRequestedObject = await models.postProduct(oProduct)
-                } catch (error) {
-                    console.log(error)
-                }
-                const oRequestedObject2 = await models.postProduct(oProduct2)
+                const oRequestedObject = models.postProduct(oProduct)
+
+                oRequestedObject.then(async (oContext) => {
+                    const aData = await oContext.getSameRoute()
+
+                    const oModel = new JSONModel(aData)
+                    this.getView().setModel(oModel, 'products')
+                    
+                }).catch(error => console.log(error.message))
+
             }
         });
     });
