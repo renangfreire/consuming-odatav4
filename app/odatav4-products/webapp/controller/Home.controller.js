@@ -58,15 +58,6 @@ sap.ui.define([
                       "Price": 10,
                       "Quantity": 20
                 }
-
-                
-                const oProduct2 = 
-                {
-                    "Name": "Grape Juice",
-                    "Description": "A delicious grape juice",
-                    "Price": 10,
-                    "Quantity": 20
-                }
                 
                 const oRequestedObject = models.postProduct(oProduct)
 
