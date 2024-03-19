@@ -117,7 +117,7 @@ sap.ui.define([
 
         const [ oDataContext ] = await oDataBindList.requestContexts()
 
-        oDataContext.delete()
+        oDataContext.delete(oData.oDeletePromise.getResult())
 
         return this._initContext(arguments)
       },
