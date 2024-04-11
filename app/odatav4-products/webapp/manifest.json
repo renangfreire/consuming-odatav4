@@ -67,14 +67,15 @@
           "bundleName": "com.lab2dev.odatav4products.i18n.i18n"
         }
       },
-      "": {
+      "main": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {
           "synchronizationMode": "None",
           "operationMode": "Server",
           "autoExpandSelect": true,
-          "earlyRequests": true
+          "earlyRequests": true,
+          "groupId": "$direct"
         }
       }
     },

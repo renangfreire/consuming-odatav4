@@ -13,16 +13,16 @@ sap.ui.define([
             return oModel;
         },
         getProducts: function(){
-            return connector.get({sPath: '/Products'})
+            return connector.read({sModelName: "main", sPath: '/Products'})
         },
         postProduct: function(oData){
-            return connector.post({oData, sPath: "/Products"})
+            return connector.cread({sModelName: "main", oData, sPath: "/Products"})
         },
         putProduct: function(oChangedData, sID) {
-            return connector.put({oChangedData, sPath: "/Products", sID})
+            return connector.update({sModelName: "main", oChangedData, sPath: "/Products", sID})
         },
         deleteProduct: function(sID){
-            return connector.delete({sPath: "/Products", sID})
+            return connector.delete({sModelName: "main", sPath: "/Products", sID})
         }
     };
 });

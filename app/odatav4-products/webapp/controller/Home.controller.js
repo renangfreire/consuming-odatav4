@@ -31,8 +31,8 @@ sap.ui.define([
 
                 const oRequestedObject = models.putProduct(oProduct, sID)
 
-                oRequestedObject.then(async (oContext) => {
-                    const aData = await oContext.getSameRoute()
+                oRequestedObject.then(async () => {
+                    const aData = await models.getProducts()
 
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
@@ -43,8 +43,8 @@ sap.ui.define([
 
                 const oRequestedObject = models.deleteProduct(sID);
 
-                oRequestedObject.then(async (oContext) => {
-                    const aData = await oContext.getSameRoute()
+                oRequestedObject.then(async () => {
+                    const aData = await models.getProducts()
 
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
@@ -61,8 +61,8 @@ sap.ui.define([
                 
                 const oRequestedObject = models.postProduct(oProduct)
 
-                oRequestedObject.then(async (oContext) => {
-                    const aData = await oContext.getSameRoute()
+                oRequestedObject.then(async () => {
+                    const aData = await models.getProducts()
 
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')

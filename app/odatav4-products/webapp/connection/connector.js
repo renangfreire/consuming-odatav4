@@ -5,35 +5,6 @@ sap.ui.define([
     "use strict";
 
     return {
-      _oContext: {
-        _init({aArguments, oEntity}){
-            this._oArguments = aArguments[0]
-            this._oEntity = oEntity
-            
-            return this
-        },
-
-        getEntity: function(){
-            return this._oEntity;
-        },
-
-        getSameRoute: function(oURLParams, oContext){
-            const { sPath } = this.getArguments()
-
-            return this.get({sPath, oURLParams, oContext})
-        },
-
-        getArguments: function(){
-           return this._oArguments;
-        }
-      },
-
-      _initContext: function(aArguments, oEntity){
-        Object.setPrototypeOf(this._oContext, this);
-
-        return this._oContext._init({ aArguments, oEntity })
-      },
-
       init: function (oComponent) {
         this._oComponent = oComponent
       },
@@ -42,17 +13,17 @@ sap.ui.define([
         return this._oComponent
       },
 
-      getODataModel: function () {
-        const oDataModel = this.getOwnerComponent().getModel()
+      getODataModel: function (sModelName) {
+        const oDataModel = this.getOwnerComponent().getModel(sModelName)
         return oDataModel
       },
 
-      _oDataBindingList: function(sPath, oContext, oURLParams){
-        return this.getODataModel().bindList(sPath, oContext, null, null, oURLParams);
+      _oDataBindingList: function(sModelName, sPath, oContext, oURLParams){
+        return this.getODataModel(sModelName).bindList(sPath, oContext, null, null, oURLParams);
       },
 
-      get: async function ({sPath, oURLParams, oContext}) {
-        const oODataModel = this.getODataModel();
+      read: async function ({sModelName, sPath, oURLParams, oContext}) {
+        const oODataModel = this.getODataModel(sModelName);
 
         const oDataContext = oODataModel.bindContext(sPath, oContext, oURLParams)
 
@@ -62,8 +33,8 @@ sap.ui.define([
         return oData
       },
       
-      post: async function ({oData, sPath, oContext, bSkipRefresh = false}) {
-        const oDataBindList = this._oDataBindingList(sPath, oContext);
+      create: async function ({sModelName, oData, sPath, oContext, bSkipRefresh = false}) {
+        const oDataBindList = this._oDataBindingList(sModelName, sPath, oContext);
         const oEntity = oDataBindList.create(oData, bSkipRefresh)
         
         await new Promise(async (resolve, reject) => {
@@ -85,15 +56,15 @@ sap.ui.define([
         })
       })
 
-        return this._initContext(arguments, oEntity)
+        return oEntity
       },
 
-      put: async function({oChangedData, sPath, sID, oContext}){
+      update: async function({sModelName, oChangedData, sPath, sID, oContext}){
           const oSettings = {
             $filter: `ID eq ${sID}`
           }
 
-          const oDataBindList = this._oDataBindingList(sPath, oContext, oSettings);
+          const oDataBindList = this._oDataBindingList(sModelName, sPath, oContext, oSettings);
           
           const [ oDataContext ] = await oDataBindList.requestContexts()
 
@@ -105,21 +76,21 @@ sap.ui.define([
 
           const oEntity = await oDataContext.requestObject()
 
-          return this._initContext(arguments, oEntity)
+          return oEntity
       },
 
-      delete: async function({sPath, sID, oContext}){
+      delete: async function({sModelName, sPath, sID, oContext}){
         const oSettings = {
           $filter: `ID eq ${sID}`
         }
   
-        const oDataBindList = this._oDataBindingList(sPath, oContext, oSettings);
+        const oDataBindList = this._oDataBindingList(sModelName, sPath, oContext, oSettings);
 
         const [ oDataContext ] = await oDataBindList.requestContexts()
 
-        oDataContext.delete(oData.oDeletePromise.getResult())
+        await oDataContext.delete()
 
-        return this._initContext(arguments)
+        return oData.oDeletePromise.getResult()
       },
     };
   });
