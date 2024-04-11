@@ -90,7 +90,7 @@ sap.ui.define([
 
         await oDataContext.delete()
 
-        return oData.oDeletePromise.getResult()
+        return oDataContext.oDeletePromise.getResult()
       },
     };
   });

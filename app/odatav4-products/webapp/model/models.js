@@ -16,7 +16,7 @@ sap.ui.define([
             return connector.read({sModelName: "main", sPath: '/Products'})
         },
         postProduct: function(oData){
-            return connector.cread({sModelName: "main", oData, sPath: "/Products"})
+            return connector.create({sModelName: "main", oData, sPath: "/Products"})
         },
         putProduct: function(oChangedData, sID) {
             return connector.update({sModelName: "main", oChangedData, sPath: "/Products", sID})

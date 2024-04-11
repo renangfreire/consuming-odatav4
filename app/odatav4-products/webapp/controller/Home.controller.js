@@ -21,7 +21,7 @@ sap.ui.define([
             },
             onEditProduct: function(){
                 const oProduct = {
-                    "ID": "cc06d375-0c0f-4fb8-9568-7bbf3e0e0807",
+                    "ID": "3079731b-b9ff-4125-8803-46a8e8ac0ec7",
                     "Name": "A Test in PUT",
                     "Description": "Its a very very interesting test",
                 }
@@ -39,7 +39,7 @@ sap.ui.define([
                 }).catch(error => console.log(error.message))
             },
             onDeleteProduct: function(){
-                const sID = "038a19af-330a-4092-bee1-daaa0f287cd5"
+                const sID = "cc06d375-0c0f-4fb8-9568-7bbf3e0e0807"
 
                 const oRequestedObject = models.deleteProduct(sID);
 
@@ -53,7 +53,6 @@ sap.ui.define([
             onCreateProduct: function(){
                 const oProduct = 
                 {
-                      "Name": "ERROR",
                       "Description": "A delicious grape juice",
                       "Price": 10,
                       "Quantity": 20
