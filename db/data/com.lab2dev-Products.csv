@@ -1,6 +1,55 @@
 ID,Name,Description,Price,Quantity
-3079731b-b9ff-4125-8803-46a8e8ac0ec7,Bread,Whole grain bread,2.5,15
-fb53acc2-7c70-4c36-8d0c-506eaabceeb8,Milk,Standard,1,15
+3079731b-b9ff-4125-8803-46a8e8ac0ec7,Milk,Whole grain bread,2.5,15
+f7e6c3d9-5a2f-4bc6-91cb-321d5f2e79d1,Milk,Fresh milk from local farms,2.0,20
+a2a8f07b-6c44-4d2b-bae8-76f109bb2ab8,Milk,Organic almond milk,3.5,10
+fdf9e667-3ba8-4db8-93c0-1f8bb46d6ea2,Milk,Low-fat milk,1.8,25
+9834f6c1-51e2-4dd8-bc2e-4e20af5443a5,Milk,Coconut milk beverage,3.0,8
+b5f908e3-b0d9-4e4a-8c26-0df5e6bbf292,Milk,Chocolate flavored milk,2.5,18
+2f0e51d7-29df-4778-9a8a-01de605be2bc,Milk,Vanilla flavored milk,2.6,14
+11253e12-0244-4727-81f4-908a4b97b28f,Milk,Soy milk,2.7,22
+9a8df47e-8d42-4a5e-a09a-b0fabb1de716,Milk,Hazelnut milk,3.2,16
+abfe74f1-1b74-4dc8-b1a0-d5f33b5fb12e,Milk,Oat milk,2.9,19
+d2e4735a-cf0d-4a12-98e4-23951a99e6ef,Milk,Rice milk,2.8,12
+f0b96d1f-9c24-48e7-98c4-2e6c8fbe2f91,Milk,Lactose-free milk,2.5,20
+d7c2d091-4c53-4f28-9b74-7334a4957f4d,Milk,Whole milk,1.9,30
+b10efae7-7c4f-4537-9e7f-2035be57a168,Milk,Skimmed milk,1.7,28
+716474b9-c56e-4e1a-96d1-0177a703f843,Milk,Buttermilk,2.3,10
+39e5b0e1-77c5-4e41-bc04-f50460a5d1c1,Milk,Half and half,2.4,15
+f07cdb1d-ff29-4fa6-934e-25a9cbf9b362,Milk,Ultra-filtered milk,3.6,18
+8bafcf4d-63f4-4b97-927b-743b89f5c731,Milk,Grass-fed milk,2.8,12
+24301c8c-b949-41ff-bfc4-4e1a5b93e48c,Milk,A2 milk,2.9,20
+e2c60f34-5354-4c92-9446-fc54829e6af6,Milk,Fair trade milk,3.1,14
+d01319fa-d8eb-43ed-b5e2-f9e0b7f151fa,Milk,Hemp milk,3.4,10
+b7ff7d54-d0b7-49c3-b2b1-377f2e3f02f3,Milk,Flax milk,2.6,12
+9e0836eb-71c7-4c2a-bdf2-4820a467df25,Milk,Macadamia milk,3.0,8
+c7e2f537-4882-45d5-814d-cb8f50d0e69c,Milk,Quinoa milk,3.5,6
+f837f5a6-450d-4f5b-923e-847c3928331d,Milk,Goat milk,3.8,7
+3a2e5a3e-5f69-422a-b64e-cc84ed8f3f9f,Milk,Sheep milk,4.0,5
+8d9c4b4d-0cc4-41b4-90d7-51f1927a8a60,Milk,Raw milk,2.5,10
+16e8f1c8-d03d-4d8e-9bc2-d81b2b01e652,Milk,Enhanced milk,2.6,11
+e9f1594e-dc7f-44a1-85d4-9efc7db06f27,Milk,Cultured milk,2.4,9
+1b7c399e-75d0-4f3a-9d44-2381af6f5f12,Milk,Evaporated milk,2.3,14
+a2b15382-e9d1-42e7-8e0f-2dc7b85a879b,Milk,Condensed milk,2.7,18
+d77e917d-17d3-4018-9771-e763ac0485b5,Milk,Infant formula milk,3.2,10
+1f0b3a3e-1c97-46b0-9a5e-d973d4b978f4,Milk,Toddler milk,3.0,8
+5b1c4f8a-fb44-48e3-9b4d-995e3a7e50d1,Milk,Growing-up milk,2.8,15
+5cd4f31e-22e2-442d-9ef0-28eeb8f18e77,Milk,Powdered milk,3.1,22
+f91d3d19-480e-4417-83e6-26915c12a4b1,Milk,Dry milk,2.2,20
+ad24c03c-3200-4b73-8d5e-3733f92ef8df,Milk,Long-life milk,2.4,25
+c37e7bb8-b22c-4c7b-bac7-12344e921246,Milk,UHT milk,2.6,18
+e0b16f5b-e896-4dbb-9ed3-6784c1b0d982,Milk,Sterilized milk,2.8,10
+b8925c92-4f78-4d6a-aed3-e90c737e0af6,Milk,Bakery milk,2.5,8
+f8d57d5d-9643-470e-8479-4b1d6ec1ef1e,Milk,Breast milk,0.0,5
+235d4986-0adf-4148-a407-6b6f13b4c7f3,Milk,Reduced-fat milk,1.6,30
+5796eb2d-3629-41e6-a832-2de3bde8dcf6,Milk,Homogenized milk,1.9,12
+d8291bb8-bd99-4a99-89b1-97b8b1ea3439,Milk,Vitamin D milk,2.0,22
+00ec9447-fd9c-44a1-8124-b60ef653f2ee,Milk,Whole grain milk,3.2,14
+bcb4ff47-b5ee-46ae-9c92-8ddede39866f,Milk,Multigrain milk,3.3,12
+6106e9d3-d4a3-4b57-a295-6c2dce4c935b,Milk,Calcium-fortified milk,3.4,15
+44a0d678-fc60-4c14-bd0d-7bb7c45e1b1b,Milk,DHA milk,3.1,20
+a5fd3a5a-38d6-4968-91ae-f421e3b7bde5,Milk,Protein-enriched milk,3.6,25
+6ac1e1da-e56c-4db3-866b-43baba13b274,Milk,High-fiber milk,3.5,18
+e1cb2908-c9ec-464d-8f9e-7324d2bc7fa8,Milk,Immunity-boosting milk,3.7,12
 9918ad8f-ba4a-441e-b427-a3d2682dfb52,Chocolate,50% ,3,15
 038a19af-330a-4092-bee1-daaa0f287cd5,Meat,Pig,10,15
 cc06d375-0c0f-4fb8-9568-7bbf3e0e0807,Paste Peanut,1,5

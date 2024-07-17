@@ -14,6 +14,7 @@ sap.ui.define([
                 const oRequestedObject = models.getProducts()
 
                 oRequestedObject.then((aData) => {
+                    debugger
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
                     
