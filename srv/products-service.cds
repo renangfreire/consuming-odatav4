@@ -7,5 +7,5 @@ service Products{
 
     entity Suppliers as projection on lab2dev.Suppliers;
     
-    entity SalesProduct as projection on lab2dev.SalesProduct;
+    // entity SalesProduct as projection on lab2dev.SalesProduct;
 }

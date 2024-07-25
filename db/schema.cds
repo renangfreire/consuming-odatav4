@@ -6,8 +6,14 @@ entity Products {
         Description      : String;
         Price            : Decimal(16, 2);
         Quantity         : Integer;
+
+        Details : Composition of ProductDetails;
 }
 
+entity ProductDetails {
+    key ID : UUID;
+        Name: String;
+}
  
 type Address {
     Street     : String;
@@ -22,7 +28,7 @@ entity Suppliers {
         Name    : String;
         Address : Address;
         Phone   : String;
-        Fax     : String
+        Fax     : String;
 }
 
 entity Category {
@@ -70,12 +76,12 @@ entity SalesData {
         Revenue      : Decimal(16, 2);
 }
 
-entity SalesProduct
-    as select from Products {
-        ID,
-        Name,
-        Description,
-} 
+// entity SalesProduct
+//     as select from Products {
+//         ID,
+//         Name,
+//         Description,
+// } 
 
 entity Admin {
     ID : UUID;

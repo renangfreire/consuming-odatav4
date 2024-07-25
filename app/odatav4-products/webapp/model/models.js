@@ -3,6 +3,9 @@ sap.ui.define([
     "sap/ui/Device",
     "com/lab2dev/odatav4products/connection/connector"
 ], 
+    /** 
+     * @param {import("../connection/connector.types")} connector
+     */
     function (JSONModel, Device, connector) {
         "use strict";
 

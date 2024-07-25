@@ -3,21 +3,15 @@ sap.ui.define([
     "com/lab2dev/odatav4products/model/models",
     "sap/ui/model/json/JSONModel"
 ],
-    /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
     function (Controller, models, JSONModel) {
         "use strict";
-
         return Controller.extend("com.lab2dev.odatav4products.controller.Home", {
             onInit: function () {
                 const oRequestedObject = models.getProducts()
 
                 oRequestedObject.then((aData) => {
-                    debugger
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
-                    
                 }).catch(error => console.log(error.message))
             },
             onEditProduct: function(){
@@ -54,15 +48,22 @@ sap.ui.define([
             onCreateProduct: function(){
                 const oProduct = 
                 {
-                      "Description": "A delicious grape juice",
-                      "Price": 10,
-                      "Quantity": 20
+                    "description": "A delicious grape juice",
+                    "price": 10,
+                    "quantity": 20,
+                    "Details": {
+                        create: {
+                            "Name": "Jeffer"
+                        }
+                    },
                 }
                 
                 const oRequestedObject = models.postProduct(oProduct)
 
                 oRequestedObject.then(async () => {
-                    const aData = await models.getProducts()
+                    const aData = await models.getProducts({
+                        $expand: "Details"
+                    })
 
                     const oModel = new JSONModel(aData)
                     this.getView().setModel(oModel, 'products')
